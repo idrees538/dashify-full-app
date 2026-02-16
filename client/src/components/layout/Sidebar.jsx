@@ -141,7 +141,7 @@ function Sidebar() {
                                 title={collapsed ? 'Expand Sidebar' : 'Collapse Sidebar'}
                                 onClick={() => setCollapsed(!collapsed)}
                             >
-                                <IoLogOutOutline />
+                                <IoLogOutOutline className={!collapsed ? 'sidebar__icon-flipped' : ''} />
                             </button>
                         </div>
                     </div>

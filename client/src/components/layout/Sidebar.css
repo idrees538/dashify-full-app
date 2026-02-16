@@ -24,6 +24,7 @@
 
 .sidebar--collapsed {
     overflow-x: visible;
+    overflow-y: auto;
 }
 
 
@@ -262,6 +263,10 @@
 .sidebar__action-btn svg {
     width: 20px;
     height: 20px;
+}
+
+.sidebar__icon-flipped {
+    transform: scaleX(-1);
 }
 
 .sidebar__notification-dot {
