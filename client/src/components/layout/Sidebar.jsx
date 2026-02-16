@@ -195,10 +195,10 @@ function Sidebar() {
                             title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
                         >
                             <span className="sidebar__theme-knob" />
-                            <span className="sidebar__theme-icon">
+                            <span className={`sidebar__theme-icon ${theme === 'light' ? 'sidebar__theme-icon--active' : 'sidebar__theme-icon--inactive'}`}>
                                 <IoSunnyOutline />
                             </span>
-                            <span className="sidebar__theme-icon">
+                            <span className={`sidebar__theme-icon ${theme === 'dark' ? 'sidebar__theme-icon--active' : 'sidebar__theme-icon--inactive'}`}>
                                 <IoMoonOutline />
                             </span>
                         </div>
