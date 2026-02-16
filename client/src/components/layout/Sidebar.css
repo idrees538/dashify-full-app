@@ -23,8 +23,7 @@
 }
 
 .sidebar--collapsed {
-    overflow-x: visible;
-    overflow-y: auto;
+    overflow: visible;
 }
 
 
