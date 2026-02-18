@@ -58,6 +58,26 @@
     width: auto;
 }
 
+/* Brand icon in sidebar header */
+.sidebar__brand-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 50%;
+    background: var(--accent-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.sidebar__brand-logo {
+    width: 54px;
+    height: 54px;
+    object-fit: contain;
+    display: block;
+}
+
 .mobile-toggle {
     font-size: 28px;
     color: var(--icon-color);
@@ -91,8 +111,8 @@
 
 
 .sidebar--collapsed {
-    width: 90px;
-    min-width: 90px;
+    width: 74px;
+    min-width: 74px;
     align-items: center;
     background: var(--bg-sidebar-collapsed);
 }
@@ -183,7 +203,7 @@
     height: 34px;
     min-width: 34px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #8204ff 0%, #a855f7 50%, #c084fc 100%);
+    background: linear-gradient(135deg, rgb(255, 96, 55) 0%, rgb(255, 96, 55) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -278,7 +298,7 @@
     height: 9px;
     top: -2px;
     right: -2px;
-    background: #8204ff;
+    background: rgb(255, 96, 55);
     border-radius: 50%;
     border: 2px solid var(--bg-sidebar);
 }
@@ -321,6 +341,19 @@
     cursor: pointer;
     transition: background 0.2s ease;
     position: relative;
+}
+
+/* Small orange alert dot for nav items */
+.sidebar__alert-dot {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgb(255, 96, 55);
+    border-radius: 50%;
+    pointer-events: none;
 }
 
 .sidebar__nav-item:hover {
@@ -445,11 +478,8 @@
 .sidebar--collapsed .sidebar__bottom {
     align-items: center;
     padding: 8px 10px;
-    /* less top space in collapsed */
     gap: 8px;
-    /* tighter spacing between icons */
-    margin-top: 0;
-    /* pull bottom group up in collapsed view */
+    margin-top: auto;
 }
 
 .sidebar--collapsed .sidebar__theme-row {
@@ -703,6 +733,17 @@
     display: none;
 }
 
+/* Hide brand text on tablet and when collapsed */
+@media (max-width: 1024px) {
+    .sidebar__brand-text {
+        display: none;
+    }
+}
+
+.sidebar--collapsed .sidebar__brand-text {
+    display: none;
+}
+
 .sidebar--collapsed .sidebar__pdf-btn {
     width: 34px;
     height: 34px;
@@ -743,6 +784,13 @@
     border-radius: 10px;
     justify-content: center;
     margin: 0 auto;
+}
+
+/* Hide collapse toggle on mobile */
+@media (max-width: 768px) {
+    .sidebar__collapse-toggle {
+        display: none;
+    }
 }
 
 /* Start Project button */

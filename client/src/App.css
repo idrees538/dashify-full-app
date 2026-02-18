@@ -7,9 +7,9 @@
   /* Light Theme */
   --bg-primary: #f5f5f7;
   --bg-secondary: #ffffff;
-  --bg-sidebar: #ffffff;
-  --bg-sidebar-collapsed: #fafafa;
-  --bg-card: #ffffff;
+  --bg-sidebar: #f0f0f0;
+  --bg-sidebar-collapsed: #f0f0f0;
+  --bg-card: #f0f0f0;
   --bg-active: rgba(0, 0, 0, 0.06);
   --bg-hover: rgba(0, 0, 0, 0.04);
 
@@ -21,13 +21,13 @@
   --text-section-label: rgba(26, 26, 46, 0.4);
 
   --border-color: rgba(0, 0, 0, 0.08);
-  --accent: #8204ff;
-  --accent-light: rgba(130, 4, 255, 0.1);
-  --badge-bg: rgba(130, 4, 255, 0.1);
-  --badge-text: #8204ff;
+  --accent: rgb(255, 96, 55);
+  --accent-light: rgba(255, 96, 55, 0.1);
+  --badge-bg: rgba(255, 96, 55, 0.1);
+  --badge-text: rgb(255, 96, 55);
   --sidebar-active-bg: rgba(0, 0, 0, 0.08);
   --icon-color: rgba(26, 26, 46, 0.6);
-  --icon-active: #8204ff;
+  --icon-active: rgb(255, 96, 55);
   --toggle-bg: rgba(0, 0, 0, 0.06);
   --toggle-knob: #ffffff;
   --shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
@@ -40,8 +40,8 @@
 [data-theme='dark'] {
   --bg-primary: #0d0d0d;
   --bg-secondary: #1a1a1a;
-  --bg-sidebar: #090909;
-  --bg-sidebar-collapsed: #120c18;
+  --bg-sidebar: #1a1a1a;
+  --bg-sidebar-collapsed: #1a1a1a;
   --bg-card: #1a1a1a;
   --bg-active: rgba(255, 255, 255, 0.08);
   --bg-hover: rgba(255, 255, 255, 0.05);
@@ -54,8 +54,8 @@
   --text-section-label: rgba(255, 255, 255, 0.4);
 
   --border-color: rgba(255, 255, 255, 0.1);
-  --accent: #8204ff;
-  --accent-light: rgba(130, 4, 255, 0.2);
+  --accent: rgb(255, 96, 55);
+  --accent-light: rgba(255, 96, 55, 0.2);
   --badge-bg: rgba(255, 255, 255, 0.1);
   --badge-text: #ffffff;
   --sidebar-active-bg: rgba(255, 255, 255, 0.14);
@@ -182,7 +182,8 @@ button {
   position: absolute;
   width: 8px;
   height: 8px;
-  background: #8204ff;
+  /* Alert orange as requested (255,96,55) */
+  background: rgb(255, 96, 55);
   border-radius: 50%;
   top: 4px;
   right: 4px;
@@ -329,8 +330,8 @@ button {
 }
 
 .card__icon--purple {
-  background: rgba(130, 4, 255, 0.12);
-  color: #8204ff;
+  background: rgba(255, 96, 55, 0.12);
+  color: rgb(255, 96, 55);
 }
 
 .card__icon--blue {
@@ -601,7 +602,7 @@ button {
 
 .dash-tokens__bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--accent), #c084fc);
+  background: linear-gradient(90deg, var(--accent), var(--accent));
   border-radius: 5px;
   transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -732,7 +733,7 @@ button {
 }
 
 .video-card__thumb--purple {
-  background: linear-gradient(135deg, rgba(130, 4, 255, 0.2), rgba(168, 85, 247, 0.1));
+  background: linear-gradient(135deg, rgba(255, 96, 55, 0.2), rgba(255, 96, 55, 0.1));
 }
 
 .video-card__thumb--blue {
@@ -934,7 +935,7 @@ button {
 
 .analytics-bar-fill {
   width: 100%;
-  background: linear-gradient(180deg, var(--accent), #c084fc);
+  background: linear-gradient(180deg, var(--accent), var(--accent));
   border-radius: 6px;
   transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   min-height: 4px;
@@ -1121,7 +1122,7 @@ button {
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent), #c084fc);
+  background: linear-gradient(135deg, var(--accent), var(--accent));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1193,8 +1194,8 @@ button {
 }
 
 .settings-row__icon--purple {
-  background: rgba(130, 4, 255, 0.12);
-  color: #8204ff;
+  background: rgba(255, 96, 55, 0.12);
+  color: rgb(255, 96, 55);
 }
 
 .settings-row__label {

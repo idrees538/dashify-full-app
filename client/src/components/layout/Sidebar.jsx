@@ -2,12 +2,11 @@ import { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { useTheme } from '../../contexts/ThemeContext';
 import {
-    IoHomeOutline,
+    IoGridOutline,
     IoCalendarOutline,
     IoBarChartOutline,
-    IoCardOutline,
+    IoCashOutline,
     IoCheckboxOutline,
-    IoDocumentTextOutline,
     IoDownloadOutline,
     IoChevronDownOutline,
     IoChevronUpOutline,
@@ -28,12 +27,13 @@ import dvAvatar from '../../assets/Dv.svg';
 import './Sidebar.css';
 
 const CAP_ITEMS = [
-    { name: 'Dashboard', icon: IoHomeOutline, path: '/dashboard' },
+    { name: 'Dashboard', icon: IoGridOutline, path: '/dashboard' },
     { name: 'Calendar', icon: IoCalendarOutline, path: '/schedule' },
     { name: 'Analytics', icon: IoBarChartOutline, path: '/analytics' },
-    { name: 'Credits', icon: IoCardOutline, path: '/credits' },
-    { name: 'Review', icon: IoCheckboxOutline, path: '/review' },
-    { name: 'Deliverables', icon: IoDocumentTextOutline, path: '/deliverables' },
+    { name: 'Credits', icon: IoCashOutline, path: '/credits' },
+    // Show an alert dot on Review
+    { name: 'Review', icon: IoCheckboxOutline, path: '/review', alert: true },
+    { name: 'Deliverables', icon: IoDownloadOutline, path: '/deliverables' },
 ];
 
 function Sidebar() {
@@ -99,21 +99,16 @@ function Sidebar() {
                     <div className="flex items-center gap-4 w-full cursor-pointer">
 
                         {/* Logo Circle */}
-                        <div className=" 
-                  rounded-full 
-                  bg-[var(--accent-light)] 
-                  flex items-center justify-center 
-                  relative overflow-hidden">
-
+                        <div className="sidebar__brand-icon">
                             <img
                                 src={currentLogo}
                                 alt="Client Portal Logo"
-                                className="w-[40px] h-[40px]"
+                                className="sidebar__brand-logo"
                             />
                         </div>
 
                         {/* Logo Text */}
-                        <span className="font-semibold text-[16px] text-[var(--text-primary)] whitespace-nowrap transition-opacity duration-200">
+                        <span className="sidebar__brand-text font-semibold text-[16px] text-[var(--text-primary)] whitespace-nowrap transition-opacity duration-200">
                             Client Portal
                         </span>
 
@@ -170,6 +165,7 @@ function Sidebar() {
                                             </span>
                                             <span className="sidebar__nav-text">{item.name}</span>
                                         </div>
+                                        {item.alert && <span className="sidebar__alert-dot" />}
                                         <span className="sidebar__tooltip">{item.name}</span>
                                     </NavLink>
                                 );

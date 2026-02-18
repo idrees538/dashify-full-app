@@ -3,7 +3,7 @@ import { IoCalendarOutline } from 'react-icons/io5';
 function Schedule() {
     const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
     const events = [
-        { time: '09:00', title: 'Team Standup', color: '#8204ff' },
+        { time: '09:00', title: 'Team Standup', color: 'rgb(255, 96, 55)' },
         { time: '11:00', title: 'Client Review', color: '#3b82f6' },
         { time: '14:00', title: 'Design Sprint', color: '#10b981' },
         { time: '16:30', title: 'Code Review', color: '#f59e0b' },

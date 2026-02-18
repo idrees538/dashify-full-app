@@ -61,21 +61,7 @@ function Dashboard() {
 
     return (
         <div className="page">
-            {/* Section 1: Welcome + Overview */}
-            <div className="dash-welcome">
-                <div className="dash-welcome__text">
-                    <h1 className="dash-welcome__greeting">Welcome back, John 👋</h1>
-                    <p className="dash-welcome__sub">Here's your account overview</p>
-                </div>
-                <div className="dash-welcome__badges">
-                    <span className="dash-badge dash-badge--active">
-                        <IoCheckmarkCircleOutline /> Active
-                    </span>
-                    <span className="dash-badge dash-badge--plans">
-                        <IoRocketOutline /> 2 Active Plans
-                    </span>
-                </div>
-            </div>
+            {/* Welcome banner removed as requested */}
 
             {/* Section 2: Token Summary */}
             <div className="dash-tokens card">

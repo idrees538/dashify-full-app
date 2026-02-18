@@ -36,7 +36,7 @@ function Chat() {
                         }}>
                             <div style={{
                                 width: 40, height: 40, minWidth: 40, borderRadius: '50%',
-                                background: 'linear-gradient(135deg, #8204ff, #a855f7)',
+                                background: 'linear-gradient(135deg, rgb(255, 96, 55), rgb(255, 96, 55))',
                                 display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 500, fontSize: 14
                             }}>DT</div>
                             <div style={{ flex: 1, overflow: 'hidden' }}>
@@ -45,7 +45,7 @@ function Chat() {
                             </div>
                             {conv.unread > 0 && (
                                 <span style={{
-                                    minWidth: 20, height: 20, borderRadius: 10, background: '#8204ff',
+                                    minWidth: 20, height: 20, borderRadius: 10, background: 'rgb(255, 96, 55)',
                                     color: '#fff', fontSize: 11, fontWeight: 600, display: 'flex', alignItems: 'center', justifyContent: 'center'
                                 }}>{conv.unread}</span>
                             )}
@@ -62,10 +62,10 @@ function Chat() {
                             }}>
                                 <div style={{
                                     maxWidth: '70%', padding: '10px 14px', borderRadius: 12,
-                                    background: msg.self ? '#8204ff' : 'var(--bg-hover)',
+                                    background: msg.self ? 'rgb(255, 96, 55)' : 'var(--bg-hover)',
                                     color: msg.self ? '#fff' : 'var(--text-primary)',
                                 }}>
-                                    {!msg.self && <div style={{ fontSize: 12, fontWeight: 600, marginBottom: 4, color: '#8204ff' }}>{msg.from}</div>}
+                                    {!msg.self && <div style={{ fontSize: 12, fontWeight: 600, marginBottom: 4, color: 'rgb(255, 96, 55)' }}>{msg.from}</div>}
                                     <p style={{ fontSize: 14, lineHeight: 1.5 }}>{msg.text}</p>
                                     <div style={{ fontSize: 11, marginTop: 4, opacity: 0.7, textAlign: 'right' }}>{msg.time}</div>
                                 </div>
@@ -88,7 +88,7 @@ function Chat() {
                             }}
                         />
                         <button style={{
-                            width: 36, height: 36, borderRadius: '50%', background: '#8204ff',
+                            width: 36, height: 36, borderRadius: '50%', background: 'rgb(255, 96, 55)',
                             display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: 16
                         }}>
                             <IoSendOutline />
