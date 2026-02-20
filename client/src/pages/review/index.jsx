@@ -2,6 +2,7 @@ import { useState } from 'react';
 import DraftSelector from './components/DraftSelector';
 import VideoPlayer from './components/VideoPlayer';
 import NotesPanel from './components/NotesPanel';
+
 const DRAFTS = [
     {
         id: 1,
@@ -64,9 +65,16 @@ function Review() {
     const [selectedDraftId, setSelectedDraftId] = useState(DRAFTS[0].id);
     const [allNotes, setAllNotes] = useState(INITIAL_NOTES);
     const [currentTime, setCurrentTime] = useState(84);
+    const [highlightedTimestamp, setHighlightedTimestamp] = useState(null);
 
     const selectedDraft = DRAFTS.find((d) => d.id === selectedDraftId);
     const notes = allNotes[selectedDraftId] || [];
+
+    /* Compute note counts per draft for the badge */
+    const noteCounts = DRAFTS.reduce((acc, d) => {
+        acc[d.id] = (allNotes[d.id] || []).length;
+        return acc;
+    }, {});
 
     const handleAddNote = (note) => {
         setAllNotes((prev) => ({
@@ -78,6 +86,14 @@ function Review() {
     const handleSelectDraft = (id) => {
         setSelectedDraftId(id);
         setCurrentTime(0);
+        setHighlightedTimestamp(null);
+    };
+
+    const handleMarkerClick = (timestamp) => {
+        setHighlightedTimestamp(timestamp);
+        setCurrentTime(timestamp);
+        /* Clear highlight after a few seconds for UX */
+        setTimeout(() => setHighlightedTimestamp(null), 4000);
     };
 
     return (
@@ -93,6 +109,7 @@ function Review() {
                 drafts={DRAFTS}
                 selectedId={selectedDraftId}
                 onSelect={handleSelectDraft}
+                noteCounts={noteCounts}
             />
 
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-6 items-start">
@@ -100,11 +117,14 @@ function Review() {
                     draft={selectedDraft}
                     currentTime={currentTime}
                     onTimeChange={setCurrentTime}
+                    notes={notes}
+                    onMarkerClick={handleMarkerClick}
                 />
                 <NotesPanel
                     notes={notes}
                     currentTime={currentTime}
                     onAddNote={handleAddNote}
+                    highlightedTimestamp={highlightedTimestamp}
                 />
             </div>
         </div>
