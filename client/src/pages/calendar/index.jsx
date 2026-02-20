@@ -10,6 +10,7 @@ export default function CalendarPage() {
         grid,
         events,
         todayKey,
+        loading,
         goToPrev,
         goToNext,
         goToToday,
@@ -31,6 +32,7 @@ export default function CalendarPage() {
                 goToPrev={goToPrev}
                 goToNext={goToNext}
                 goToToday={goToToday}
+                loading={loading}
             />
 
             <CalendarGrid

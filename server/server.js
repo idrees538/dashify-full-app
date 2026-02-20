@@ -1,43 +1,60 @@
 const express = require('express');
 const cors = require('cors');
+const helmet = require('helmet');
+const morgan = require('morgan');
+const rateLimit = require('express-rate-limit');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
+const errorHandler = require('./core/errorHandler');
 
 dotenv.config();
 
 const app = express();
 
-// Middleware
+// --------------- Security & Logging Middleware ---------------
+app.use(helmet());
+
+if (process.env.NODE_ENV === 'development') {
+    app.use(morgan('dev'));
+}
+
+// Rate limiting — 100 requests per 15 min per IP
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 100,
+    message: { success: false, message: 'Too many requests, please try again later' },
+});
+app.use('/api', limiter);
+
+// --------------- Body Parsing ---------------
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
-// Routes
+// --------------- Routes ---------------
 app.use('/api', require('./routes'));
 
 // Health check
-app.get('/health', (req, res) => {
+app.get('/health', (_req, res) => {
     res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
-// Error handling middleware
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(err.status || 500).json({
-        success: false,
-        message: err.message || 'Internal Server Error',
-    });
+// --------------- Error Handling ---------------
+app.use(errorHandler);
+
+// 404 handler
+app.use((_req, res) => {
+    res.status(404).json({ success: false, message: 'Route not found' });
 });
 
+// --------------- Start Server ---------------
 const PORT = process.env.PORT || 5000;
 
-// Connect to DB and start server
 const startServer = async () => {
     try {
-        // Uncomment when MongoDB is configured:
-        // await connectDB();
+        await connectDB();
         app.listen(PORT, () => {
-            console.log(`🚀 Server running on port ${PORT}`);
+            console.log(`🚀 Server running on port ${PORT} in ${process.env.NODE_ENV || 'development'} mode`);
         });
     } catch (error) {
         console.error('Failed to start server:', error);

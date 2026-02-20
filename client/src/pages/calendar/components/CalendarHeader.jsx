@@ -1,6 +1,7 @@
 import {
     IoChevronBackOutline,
     IoChevronForwardOutline,
+    IoSyncOutline,
 } from 'react-icons/io5';
 import { EVENT_TYPES } from '../constants';
 
@@ -9,7 +10,7 @@ const MONTH_NAMES = [
     'July', 'August', 'September', 'October', 'November', 'December',
 ];
 
-export default function CalendarHeader({ currentDate, goToPrev, goToNext, goToToday }) {
+export default function CalendarHeader({ currentDate, goToPrev, goToNext, goToToday, loading }) {
     const month = MONTH_NAMES[currentDate.getMonth()];
     const year = currentDate.getFullYear();
 
@@ -47,6 +48,10 @@ export default function CalendarHeader({ currentDate, goToPrev, goToNext, goToTo
                 <h2 className="text-lg font-bold text-text-primary ml-1 whitespace-nowrap">
                     {month} {year}
                 </h2>
+
+                {loading && (
+                    <IoSyncOutline className="animate-spin text-text-secondary text-base ml-1" />
+                )}
             </div>
 
             {/* Right: Legend */}

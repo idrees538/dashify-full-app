@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema(
             type: String,
             required: [true, 'Name is required'],
             trim: true,
+            maxlength: 100,
         },
         email: {
             type: String,
@@ -30,6 +31,30 @@ const userSchema = new mongoose.Schema(
             type: String,
             default: '',
         },
+        bio: {
+            type: String,
+            default: '',
+            maxlength: 500,
+        },
+        phone: {
+            type: String,
+            default: '',
+        },
+        company: {
+            type: String,
+            default: '',
+        },
+        preferences: {
+            theme: {
+                type: String,
+                enum: ['light', 'dark'],
+                default: 'dark',
+            },
+            notifications: {
+                email: { type: Boolean, default: true },
+                push: { type: Boolean, default: true },
+            },
+        },
     },
     {
         timestamps: true,
@@ -47,6 +72,13 @@ userSchema.pre('save', async function (next) {
 // Compare password method
 userSchema.methods.comparePassword = async function (candidatePassword) {
     return bcrypt.compare(candidatePassword, this.password);
+};
+
+// Remove password from JSON output
+userSchema.methods.toJSON = function () {
+    const obj = this.toObject();
+    delete obj.password;
+    return obj;
 };
 
 module.exports = mongoose.model('User', userSchema);

@@ -77,21 +77,21 @@ export default function CalendarDay({
                 })}
             </div>
 
-            {/* Add button — visible on hover */}
+            {/* Add button — always visible at the bottom of each day (client requirement) */}
             {isCurrentMonth && (
                 <button
                     onClick={() => onAddClick(cell)}
-                    className="absolute bottom-1.5 right-1.5
-                     w-6 h-6 rounded-full
-                     flex items-center justify-center
-                     bg-accent text-white text-sm
+                    className="mt-auto mx-auto w-[calc(100%-4px)] h-6
+                     flex items-center justify-center gap-1
+                     rounded-md text-[10px] font-semibold
+                     bg-bg-primary border border-dashed border-border-color
+                     text-text-secondary/60
                      opacity-0 group-hover:opacity-100
-                     hover:scale-110
-                     transition-all duration-150
-                     shadow-md"
+                     hover:border-accent hover:text-accent hover:bg-accent/5
+                     transition-all duration-150"
                     title="Add event"
                 >
-                    <IoAddOutline />
+                    <IoAddOutline className="text-xs" />
                 </button>
             )}
         </div>
