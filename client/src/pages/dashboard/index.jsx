@@ -60,7 +60,7 @@ function Dashboard() {
     const tokensPercent = (tokensUsed / tokensTotal) * 100;
 
     return (
-        <div className="max-w-[1200px] mx-auto animate-fade-in">
+        <div className="w-full max-w-[1200px] mx-auto animate-fade-in px-2 sm:px-4 md:px-0">
             {/* Welcome banner removed as requested */}
 
             {/* Section 2: Token Summary */}

@@ -3,9 +3,9 @@ import dvAvatar from '../../assets/Dv.svg';
 
 function Navbar() {
     return (
-        <nav className="flex items-center justify-between h-14 p-0 pr-2 bg-transparent border-none sm:mb-4">
+        <nav className="hidden md:flex items-center justify-between h-14 p-0 pr-2 bg-transparent border-none sm:mb-4">
             <div className="ml-auto inline-flex items-center gap-2">
-                <div className="relative">
+                <div className="relative md:hidden">
                     <button className="w-[34px] h-[34px] inline-flex items-center justify-center text-text-secondary rounded-lg bg-bg-secondary border border-border-color hover:shadow-sm transition-shadow" title="Menu">
                         <IoMenuOutline />
                     </button>
