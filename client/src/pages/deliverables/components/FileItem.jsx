@@ -34,7 +34,7 @@ function FileItem({ file }) {
     return (
         <div className="flex items-center gap-3.5 p-3.5 px-4 border-b border-border-color last:border-b-0 transition-colors hover:bg-bg-hover hover:rounded-xl mx-0">
             <div className={`w-[42px] h-[42px] rounded-xl text-xl flex-shrink-0 flex items-center justify-center ${iconColorClass}`}>
-                <Icon />
+                {/* <Icon /> */}
             </div>
             <div className="flex-1 flex flex-col gap-0.5 min-w-0">
                 <span className="text-sm font-semibold text-text-primary truncate">{file.name}</span>

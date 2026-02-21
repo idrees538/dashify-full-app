@@ -563,7 +563,7 @@ These frontend pages have mock data but no backend module yet. Add them by follo
 | Social Media | `modules/social/` | Could integrate with social APIs (Instagram, TikTok) |
 | News | `modules/news/` | Simple CRUD or RSS feed aggregation |
 | Recruitment | `modules/recruitment/` | Job posts + applicant tracking |
-| Review | `modules/review/` | Video review with Frame.io-style comments |
+| Review | `modules/review/` | **Frontend done** (Frame.io-style annotations). Backend needs: drafts CRUD, notes CRUD with timestamps, user scoping |
 | Deliverables | `modules/deliverables/` | File management, zip downloads |
 | Shared | `modules/shared/` | Shared files/links between team members |
 | Privacy | — | Static page (no backend needed) |

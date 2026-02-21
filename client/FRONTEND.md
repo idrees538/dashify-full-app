@@ -63,7 +63,12 @@ client/src/
     ├── recruitment/index.jsx        # Recruitment posts
     ├── project/index.jsx            # Projects list
     ├── credits/index.jsx            # Credit bank + transactions
-    ├── review/index.jsx             # Video review (Frame.io style)
+    ├── review/                       # Video review ★ Frame.io integration
+    │   ├── index.jsx                # Page entry + state wiring
+    │   └── components/
+    │       ├── DraftSelector.jsx     # Horizontal draft card row + note badges
+    │       ├── VideoPlayer.jsx      # Video area + timeline annotation markers
+    │       └── NotesPanel.jsx       # Frame.io-style threaded comments
     ├── deliverables/index.jsx       # Deliverable files
     ├── activity/index.jsx           # Activity log
     ├── shared/index.jsx             # Shared files
@@ -90,7 +95,7 @@ client/src/
 | `/recruitment` | Recruitment | Mock data |
 | `/project` | Projects | Mock data |
 | `/credits` | Credits | Mock data |
-| `/review` | Review | Mock data |
+| `/review` | Review | ★ **Frame.io-style** (mock data) |
 | `/deliverables` | Deliverables | Mock data |
 | `/activity` | Activity | Mock data |
 | `/shared` | Shared | Mock data |
@@ -192,6 +197,57 @@ useCalendar (hook)
 
 ### Fallback Behavior
 If the server is offline or user is not logged in, the calendar gracefully falls back to **hardcoded seed events** so the UI is never empty.
+
+---
+
+## Review Module (Frame.io-Style Annotations)
+
+The Review tab provides a **Frame.io-inspired** video review experience with timestamped annotations.
+
+### Architecture
+```
+ReviewPage
+ ├── DraftSelector       — horizontal card row with note count badges per draft
+ ├── VideoPlayer         — gradient video area + timeline with annotation markers
+ │   └── Annotation dots — coloured markers on scrub bar at note timestamps
+ └── NotesPanel          — Frame.io-style threaded comments
+     ├── Timestamp input — adds note pinned to current scrub time
+     ├── Note list       — sorted by timestamp, auto-scrolls on marker click
+     └── Actions         — Reply / Resolve buttons per note
+```
+
+### Key Features
+| Feature | Description |
+|---------|-------------|
+| Annotation markers | Orange dots on the video timeline at each note's timestamp |
+| Marker clustering | Notes within ±2s are grouped into one marker with a count tooltip |
+| Click-to-highlight | Clicking a marker jumps the timeline and highlights the matching note |
+| Auto-scroll | Notes panel scrolls to the highlighted note via `scrollIntoView` |
+| Note count badges | Each draft card shows how many annotations exist (red pill badge) |
+| Reply / Resolve | Mock action buttons per note for realistic comment-thread feel |
+| Highlight timeout | Active highlight auto-clears after 4 seconds |
+
+### Data Flow
+```
+User clicks timeline marker
+  → onMarkerClick(timestamp)
+  → sets highlightedTimestamp + currentTime
+  → VideoPlayer scrubber moves to that position
+  → NotesPanel highlights + scrolls to matching note
+  → Highlight clears after 4s
+
+User adds a note
+  → form submits with current scrub time as timestamp
+  → new note appended to allNotes state
+  → new annotation marker appears on timeline immediately
+```
+
+### Mock Data
+Currently uses hardcoded draft list (4 drafts) and initial notes. To connect to a backend:
+1. Create `services/reviewService.js`
+2. Create `pages/review/hooks/useReview.js`
+3. Fetch drafts + notes from `GET /api/review/drafts` and `GET /api/review/:draftId/notes`
+4. Post new notes via `POST /api/review/:draftId/notes`
 
 ---
 
