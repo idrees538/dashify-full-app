@@ -64,62 +64,62 @@ function Dashboard() {
             {/* Welcome banner removed as requested */}
 
             {/* Section 2: Token Summary */}
-            <div className="mb-8 bg-bg-secondary rounded-xl p-[18px] shadow-sm border border-border-color hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200">
-                <div className="flex items-center gap-3.5 mb-6">
-                    <div className="w-11 h-11 rounded-xl bg-[#F59E0B]/10 text-[#F59E0B] flex items-center justify-center text-[22px]">
+            <div className="mb-6 bg-bg-secondary rounded-lg p-4 shadow-sm border border-border-color hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200">
+                <div className="flex items-center gap-3 mb-4">
+                    <div className="w-9 h-9 rounded-lg bg-[#F59E0B]/10 text-[#F59E0B] flex items-center justify-center text-[20px]">
                         <IoFlashOutline />
                     </div>
                     <div>
-                        <h3 className="text-[17px] font-semibold text-text-primary">Token Usage</h3>
-                        <p className="text-[13px] text-text-secondary">Track your token consumption</p>
+                        <h3 className="text-base font-semibold text-text-primary">Token Usage</h3>
+                        <p className="text-[12px] text-text-secondary">Track your consumption</p>
                     </div>
                 </div>
-                <div className="flex gap-8 mb-[18px] flex-wrap">
+                <div className="flex gap-6 mb-4 flex-wrap">
                     <div className="flex flex-col gap-1">
-                        <span className="text-[12px] text-text-secondary uppercase tracking-wider font-medium">Total Available</span>
-                        <span className="text-2xl font-bold text-text-primary">{tokensTotal.toLocaleString()}</span>
+                        <span className="text-[11px] text-text-secondary uppercase tracking-wider font-medium">Total Available</span>
+                        <span className="text-xl font-bold text-text-primary">{tokensTotal.toLocaleString()}</span>
                     </div>
                     <div className="flex flex-col gap-1">
-                        <span className="text-[12px] text-text-secondary uppercase tracking-wider font-medium">Used</span>
-                        <span className="text-2xl font-bold text-[#F59E0B]">{tokensUsed.toLocaleString()}</span>
+                        <span className="text-[11px] text-text-secondary uppercase tracking-wider font-medium">Used</span>
+                        <span className="text-xl font-bold text-[#F59E0B]">{tokensUsed.toLocaleString()}</span>
                     </div>
                     <div className="flex flex-col gap-1">
-                        <span className="text-[12px] text-text-secondary uppercase tracking-wider font-medium">Remaining</span>
-                        <span className="text-2xl font-bold text-[#10B981]">{(tokensTotal - tokensUsed).toLocaleString()}</span>
+                        <span className="text-[11px] text-text-secondary uppercase tracking-wider font-medium">Remaining</span>
+                        <span className="text-xl font-bold text-[#10B981]">{(tokensTotal - tokensUsed).toLocaleString()}</span>
                     </div>
                 </div>
-                <div className="flex flex-col gap-2">
-                    <div className="w-full h-2.5 bg-black/5 dark:bg-white/5 rounded-full overflow-hidden">
+                <div className="flex flex-col gap-1.5">
+                    <div className="w-full h-2 bg-black/5 dark:bg-white/5 rounded-full overflow-hidden">
                         <div
                             className="h-full bg-accent rounded-full transition-all duration-1000"
                             style={{ width: `${tokensPercent}%` }}
                         />
                     </div>
-                    <span className="text-[12px] text-text-secondary font-medium">
+                    <span className="text-[11px] text-text-secondary font-medium">
                         {tokensUsed.toLocaleString()} / {tokensTotal.toLocaleString()} used
                     </span>
                 </div>
             </div>
 
             {/* Section 3: Active Plans */}
-            <div className="mb-8">
-                <h2 className="text-lg font-semibold text-text-primary mb-4">Active Plans</h2>
-                <div className="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-5">
+            <div className="mb-6">
+                <h2 className="text-base font-semibold text-text-primary mb-3">Active Plans</h2>
+                <div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-4">
                     {PLANS.map((plan, i) => (
-                        <div className="bg-bg-secondary rounded-xl p-[18px] shadow-sm border border-border-color hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200" key={i}>
-                            <div className="flex justify-between items-center mb-4">
-                                <h3 className="text-base font-semibold text-text-primary">{plan.name}</h3>
-                                <span className={`px-3 py-1 rounded-xl text-[12px] font-semibold ${plan.status.toLowerCase() === 'active' ? 'bg-[#10B981]/10 text-[#10B981]' : 'bg-[#EF4444]/10 text-[#EF4444]'}`}>
+                        <div className="bg-bg-secondary rounded-lg p-4 shadow-sm border border-border-color hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200" key={i}>
+                            <div className="flex justify-between items-center mb-3">
+                                <h3 className="text-sm font-semibold text-text-primary">{plan.name}</h3>
+                                <span className={`px-2 py-0.5 rounded-lg text-[11px] font-semibold ${plan.status.toLowerCase() === 'active' ? 'bg-[#10B981]/10 text-[#10B981]' : 'bg-[#EF4444]/10 text-[#EF4444]'}`}>
                                     {plan.status}
                                 </span>
                             </div>
                             <div className="flex flex-col gap-2.5">
-                                <div className="flex items-center gap-2 text-[13px] text-text-secondary">
-                                    <IoTimeOutline className="text-base text-text-secondary/60" />
+                                <div className="flex items-center gap-2 text-[12px] text-text-secondary">
+                                    <IoTimeOutline className="text-sm text-text-secondary/60" />
                                     <span>Expires: {plan.expiry}</span>
                                 </div>
-                                <div className="flex items-center gap-2 text-[13px] text-text-secondary">
-                                    <IoFlashOutline className="text-base text-text-secondary/60" />
+                                <div className="flex items-center gap-2 text-[12px] text-text-secondary">
+                                    <IoFlashOutline className="text-sm text-text-secondary/60" />
                                     <span>{plan.tokens} tokens allocated</span>
                                 </div>
                             </div>
@@ -129,21 +129,21 @@ function Dashboard() {
             </div>
 
             {/* Section 4: Quick Access Widgets */}
-            <div className="mb-8">
-                <h2 className="text-lg font-semibold text-text-primary mb-4">Quick Access</h2>
-                <div className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4">
+            <div className="mb-6">
+                <h2 className="text-base font-semibold text-text-primary mb-3">Quick Access</h2>
+                <div className="grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-4">
                     {QUICK_WIDGETS.map((w, i) => {
                         const Icon = w.icon;
                         const iconColorClass = w.color === '--purple' ? 'bg-accent-light text-accent' :
                             w.color === '--blue' ? 'bg-blue-500/10 text-blue-500' :
                                 w.color === '--green' ? 'bg-[#10B981]/10 text-[#10B981]' : 'bg-gray-500/10 text-gray-500';
                         return (
-                            <NavLink to={w.path} className="bg-bg-secondary rounded-xl p-[18px] shadow-sm border border-border-color hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 flex flex-col items-start" key={i}>
-                                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-[22px] ${iconColorClass}`}>
+                            <NavLink to={w.path} className="bg-bg-secondary rounded-lg p-4 shadow-sm border border-border-color hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 flex flex-col items-start" key={i}>
+                                <div className={`w-10 h-10 rounded-lg flex items-center justify-center mb-3 text-[20px] ${iconColorClass}`}>
                                     <Icon />
                                 </div>
-                                <p className="text-sm font-medium text-text-secondary mb-1">{w.label}</p>
-                                <p className="text-xl font-bold text-text-primary">{w.value}</p>
+                                <p className="text-[12px] font-medium text-text-secondary mb-0.5">{w.label}</p>
+                                <p className="text-lg font-bold text-text-primary">{w.value}</p>
                             </NavLink>
                         );
                     })}

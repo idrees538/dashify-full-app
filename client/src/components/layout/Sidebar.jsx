@@ -95,22 +95,22 @@ function Sidebar() {
             )}
 
             <aside className={`
-                flex flex-col items-start py-4 h-full bg-bg-sidebar border-r border-border-color transition-all duration-300 z-[200] overflow-y-auto ${collapsed ? 'overflow-visible' : 'overflow-x-hidden'} md:overflow-visible
-                ${collapsed ? 'w-[74px] min-w-[74px] items-center' : 'w-60 min-w-60'}
+                flex flex-col items-start py-3 h-full bg-bg-sidebar border-r border-border-color transition-all duration-300 z-[200] overflow-y-auto ${collapsed ? 'overflow-visible' : 'overflow-x-hidden'} md:overflow-visible
+                ${collapsed ? 'w-16 min-w-16 items-center' : 'w-52 min-w-52'}
                 ${mobileOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
                 fixed md:relative top-0 left-0 bottom-0
             `}>
                 {/* Sidebar Header: Logo + Brand (Hidden on Mobile as it has its own header) */}
-                <div className={`hidden md:flex flex-col items-center px-4 pb-4 gap-4 w-full border-b border-border-color ${collapsed ? 'px-5 py-3' : ''}`}>
-                    <div className="flex items-center gap-4 w-full cursor-pointer">
-                        <div className="w-10 h-10 min-w-10 rounded-full bg-accent-light flex items-center justify-center overflow-hidden">
+                <div className={`hidden md:flex flex-col items-center px-3 pb-3 gap-3 w-full border-b border-border-color ${collapsed ? 'px-4 py-2' : ''}`}>
+                    <div className="flex items-center gap-3 w-full cursor-pointer">
+                        <div className="w-9 h-9 min-w-9 rounded-lg bg-accent-light flex items-center justify-center overflow-hidden">
                             <img
                                 src={currentLogo}
                                 alt="Client Portal Logo"
-                                className="w-[54px] h-[54px] object-contain block"
+                                className="w-[48px] h-[48px] object-contain block"
                             />
                         </div>
-                        <span className={`font-semibold text-base text-text-primary whitespace-nowrap transition-opacity duration-200 ${collapsed ? 'opacity-0 w-0 overflow-hidden' : 'opacity-100'}`}>
+                        <span className={`font-semibold text-sm text-text-primary whitespace-nowrap transition-opacity duration-200 ${collapsed ? 'opacity-0 w-0 overflow-hidden' : 'opacity-100'}`}>
                             Client Portal
                         </span>
                     </div>
@@ -130,20 +130,20 @@ function Sidebar() {
                 </div>
 
                 {/* General Section */}
-                <div className={`flex flex-col items-center px-4 md:px-4 pb-4 gap-4 w-full border-b border-border-color ${collapsed ? 'px-5 py-3' : ''}`}>
-                    <span className={`font-medium text-[10px] text-text-secondary/60 w-full text-left uppercase tracking-wider ${collapsed ? 'md:hidden' : ''}`}>General</span>
+                <div className={`flex flex-col items-center px-3 md:px-3 pb-3 gap-3 w-full border-b border-border-color ${collapsed ? 'px-4 py-2' : ''}`}>
+                    <span className={`font-medium text-[9px] text-text-secondary/60 w-full text-left uppercase tracking-wider ${collapsed ? 'md:hidden' : ''}`}>General</span>
                     <nav className={`flex flex-col gap-1 w-full ${collapsed ? 'items-center' : 'items-start'}`}>
                         {!hasProject ? (
-                            <NavLink className={`flex items-center gap-2 w-full p-2 text-text-secondary hover:bg-bg-hover rounded transition-colors duration-200 relative group ${collapsed ? 'justify-center w-10 h-10' : ''}`}>
+                            <NavLink className={`flex items-center gap-2 w-full p-1.5 text-text-secondary hover:bg-bg-hover rounded-md transition-colors duration-200 relative group ${collapsed ? 'justify-center w-9 h-9' : ''}`}>
                                 <span className={collapsed ? 'md:hidden' : ''}>Project</span>
-                                <IoAddOutline className="text-xl" />
-                                {collapsed && <span className="hidden group-hover:block absolute left-[calc(100%+12px)] top-1/2 -translate-y-1/2 bg-bg-card text-text-primary px-3 py-1.5 rounded-md text-[13px] font-medium whitespace-nowrap shadow-lg border border-border-color z-[200] pointer-events-none">Start Project</span>}
+                                <IoAddOutline className="text-lg" />
+                                {collapsed && <span className="hidden group-hover:block absolute left-[calc(100%+12px)] top-1/2 -translate-y-1/2 bg-bg-card text-text-primary px-3 py-1.5 rounded-md text-[12px] font-medium whitespace-nowrap shadow-lg border border-border-color z-[200] pointer-events-none">Start Project</span>}
                             </NavLink>
                         ) : (
-                            <NavLink to="/project" className={({ isActive }) => `flex flex-row justify-between items-center p-1.5 gap-2.5 w-full rounded transition-colors duration-200 cursor-pointer relative group ${collapsed ? 'md:w-10 md:h-10 md:px-0 mx-auto justify-center' : 'px-2'} ${isActive ? 'bg-black/[0.08] dark:bg-white/10' : 'hover:bg-bg-hover'}`}>
-                                <div className={`flex items-center gap-[11px] flex-1 ${collapsed ? 'md:justify-center md:gap-0' : 'justify-between'}`}>
-                                    <span className={`font-normal text-[13px] leading-4 text-text-secondary whitespace-nowrap transition-opacity duration-200 ${collapsed ? 'md:opacity-0 md:w-0 overflow-hidden' : 'opacity-100'}`}>{projectName}</span>
-                                    <span className="w-5.5 h-5.5 min-w-[22px] flex items-center justify-center text-text-secondary text-base transition-colors duration-200">
+                            <NavLink to="/project" className={({ isActive }) => `flex flex-row justify-between items-center p-1.5 gap-2 w-full rounded-md transition-colors duration-200 cursor-pointer relative group ${collapsed ? 'md:w-9 md:h-9 md:px-0 mx-auto justify-center' : 'px-2'} ${isActive ? 'bg-black/[0.08] dark:bg-white/10' : 'hover:bg-bg-hover'}`}>
+                                <div className={`flex items-center gap-2.5 flex-1 ${collapsed ? 'md:justify-center md:gap-0' : 'justify-between'}`}>
+                                    <span className={`font-normal text-[12px] leading-4 text-text-secondary whitespace-nowrap transition-opacity duration-200 ${collapsed ? 'md:opacity-0 md:w-0 overflow-hidden' : 'opacity-100'}`}>{projectName}</span>
+                                    <span className="w-5 h-5 min-w-[20px] flex items-center justify-center text-text-secondary text-sm transition-colors duration-200">
                                         <IoFolderOutline />
                                     </span>
                                 </div>
@@ -154,8 +154,8 @@ function Sidebar() {
                 </div>
 
                 {/* Content Accelerator Program */}
-                <div className={`flex flex-col items-center px-4 pb-4 gap-4 w-full border-b border-border-color ${collapsed ? 'px-5 py-3' : ''}`}>
-                    <span className={`font-medium text-[10px] text-text-secondary/60 w-full text-left uppercase tracking-wider ${collapsed ? 'md:hidden' : ''}`}>Content Accelerator Program</span>
+                <div className={`flex flex-col items-center px-3 pb-3 gap-3 w-full border-b border-border-color ${collapsed ? 'px-4 py-2' : ''}`}>
+                    <span className={`font-medium text-[9px] text-text-secondary/60 w-full text-left uppercase tracking-wider ${collapsed ? 'md:hidden' : ''}`}>Content Accelerator Program</span>
                     {showCap && (
                         <nav className={`flex flex-col gap-1 w-full ${collapsed ? 'items-center' : 'items-start'}`}>
                             {CAP_ITEMS.map((item) => {
@@ -164,18 +164,18 @@ function Sidebar() {
                                     <NavLink
                                         to={item.path}
                                         key={item.name + item.path}
-                                        className={({ isActive }) => `flex flex-row justify-between items-center p-1.5 gap-2.5 w-full rounded transition-colors duration-200 cursor-pointer relative group ${collapsed ? 'md:w-10 md:h-10 md:px-0 mx-auto justify-center' : 'px-2'} ${isActive ? 'bg-black/[0.12] dark:bg-white/10' : 'hover:bg-bg-hover'}`}
+                                        className={({ isActive }) => `flex flex-row justify-between items-center p-1.5 gap-2 w-full rounded-md transition-colors duration-200 cursor-pointer relative group ${collapsed ? 'md:w-9 md:h-9 md:px-0 mx-auto justify-center' : 'px-2'} ${isActive ? 'bg-black/[0.12] dark:bg-white/10' : 'hover:bg-bg-hover'}`}
                                     >
-                                        <div className={`flex items-center gap-[11px] flex-1 ${collapsed ? 'md:justify-center md:gap-0' : ''}`}>
-                                            <span className={`w-5.5 h-5.5 min-w-[22px] flex items-center justify-center text-text-secondary text-base transition-colors duration-200 group-[.active]:text-accent`}>
+                                        <div className={`flex items-center gap-2.5 flex-1 ${collapsed ? 'md:justify-center md:gap-0' : ''}`}>
+                                            <span className={`w-5 h-5 min-w-[20px] flex items-center justify-center text-text-secondary text-sm transition-colors duration-200 group-[.active]:text-accent`}>
                                                 <Icon />
                                             </span>
-                                            <span className={`font-normal text-[13px] leading-4 text-text-secondary whitespace-nowrap transition-opacity duration-200 group-[.active]:text-text-primary group-[.active]:font-medium ${collapsed ? 'md:opacity-0 md:w-0 overflow-hidden' : 'opacity-100'}`}>{item.name}</span>
+                                            <span className={`font-normal text-[12px] leading-4 text-text-secondary whitespace-nowrap transition-opacity duration-200 group-[.active]:text-text-primary group-[.active]:font-medium ${collapsed ? 'md:opacity-0 md:w-0 overflow-hidden' : 'opacity-100'}`}>{item.name}</span>
                                         </div>
-                                        {item.alert && <span className={`absolute w-1.5 h-1.5 bg-accent rounded-full pointer-events-none ${collapsed ? 'top-2 right-2' : 'right-2.5 top-1/2 -translate-y-1/2'}`} />}
+                                        {item.alert && <span className={`absolute w-1.5 h-1.5 bg-accent rounded-full pointer-events-none ${collapsed ? 'top-1.5 right-1.5' : 'right-2.5 top-1/2 -translate-y-1/2'}`} />}
                                         {collapsed && (
                                             <span
-                                                className="pointer-events-none absolute left-[calc(100%+12px)] top-1/2 -translate-y-1/2 bg-bg-card text-text-primary px-3 py-1.5 rounded-md text-[13px] font-medium whitespace-nowrap shadow-lg border border-border-color z-[500] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-150"
+                                                className="pointer-events-none absolute left-[calc(100%+12px)] top-1/2 -translate-y-1/2 bg-bg-card text-text-primary px-3 py-1.5 rounded-md text-[12px] font-medium whitespace-nowrap shadow-lg border border-border-color z-[500] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-150"
                                             >
                                                 {item.name}
                                             </span>
@@ -188,23 +188,23 @@ function Sidebar() {
                 </div>
 
                 {/* Bottom: Collapse Toggle + Theme Toggle */}
-                <div className="flex flex-col items-start px-5 gap-2 w-full mt-auto pt-2">
-                    <button className={`inline-flex items-center gap-2 w-full p-2 px-2.5 rounded hover:bg-bg-hover transition-colors ${collapsed ? 'md:justify-center md:w-8.5 md:h-8.5 rounded-lg' : ''}`} title="Download PDF Report (coming soon)">
+                <div className="flex flex-col items-start px-3 gap-1.5 w-full mt-auto pt-2">
+                    <button className={`inline-flex items-center gap-2 w-full p-1.5 px-2 rounded-md hover:bg-bg-hover transition-colors ${collapsed ? 'md:justify-center md:w-8 md:h-8 rounded-lg' : ''}`} title="Download PDF Report (coming soon)">
                         <IoDownloadOutline className="text-text-secondary" />
-                        <span className={`text-xs ${collapsed ? 'md:hidden' : ''}`}>PDF Report</span>
+                        <span className={`text-[11px] ${collapsed ? 'md:hidden' : ''}`}>PDF Report</span>
                     </button>
 
                     {/* Collapse toggle (Desktop only) */}
                     <button
-                        className={`hidden md:inline-flex items-center gap-2 w-full p-2 px-2.5 rounded hover:bg-bg-hover transition-colors ${collapsed ? 'justify-center w-8.5 h-8.5 rounded-lg' : ''}`}
+                        className={`hidden md:inline-flex items-center gap-2 w-full p-1.5 px-2 rounded-md hover:bg-bg-hover transition-colors ${collapsed ? 'justify-center w-8 h-8 rounded-lg' : ''}`}
                         onClick={() => setCollapsed(!collapsed)}
                         title={collapsed ? 'Expand menu' : 'Collapse menu'}
                     >
                         <IoLogOutOutline className={`text-text-secondary ${!collapsed ? 'scale-x-[-1]' : ''}`} />
-                        <span className={`text-xs ${collapsed ? 'hidden' : ''}`}>{collapsed ? 'Expand' : 'Collapse'} Menu</span>
+                        <span className={`text-[11px] ${collapsed ? 'hidden' : ''}`}>{collapsed ? 'Expand' : 'Collapse'} Menu</span>
                     </button>
 
-                    <div className={`flex items-center gap-4 w-full p-2 px-2.5 rounded-lg ${collapsed ? 'md:gap-0 md:p-2 md:justify-center' : ''}`}>
+                    <div className={`flex items-center gap-3 w-full p-1.5 px-2 rounded-md ${collapsed ? 'md:gap-0 md:p-1.5 md:justify-center' : ''}`}>
                         <div
                             onClick={toggleTheme}
                             role="button"
@@ -213,8 +213,8 @@ function Sidebar() {
                             className={`
                                 relative flex items-center justify-center cursor-pointer transition-all duration-300
                                 ${collapsed
-                                    ? "md:w-[34px] md:h-[34px] md:min-w-[34px] md:rounded-[10px] md:bg-transparent md:shadow-none md:hover:bg-bg-hover"
-                                    : "min-w-[63px] h-[29px] px-[5px] rounded-[20px] bg-black/5 dark:bg-white/10 shadow-sm"
+                                    ? "md:w-[30px] md:h-[30px] md:min-w-[30px] md:rounded-lg md:bg-transparent md:shadow-none md:hover:bg-bg-hover"
+                                    : "min-w-[58px] h-[26px] px-[4px] rounded-full bg-black/5 dark:bg-white/10 shadow-sm"
                                 }
                             `}
                         >
@@ -222,24 +222,24 @@ function Sidebar() {
                             {(!collapsed || mobileOpen) && (
                                 <span
                                     className={`
-                                        absolute w-[25px] h-[25px] rounded-full bg-white dark:bg-white/20 shadow-sm top-1/2 -translate-y-1/2 transition-all duration-300
-                                        ${theme === "light" ? "left-[calc(100%-27px)]" : "left-[2px]"}
+                                        absolute w-[20px] h-[20px] rounded-full bg-white dark:bg-white/20 shadow-sm top-1/2 -translate-y-1/2 transition-all duration-300
+                                        ${theme === "light" ? "left-[calc(100%-22px)]" : "left-[2px]"}
                                     `}
                                 />
                             )}
 
                             {/* SUN */}
-                            <span className={`absolute top-1/2 -translate-y-1/2 left-[5px] w-[18px] h-[18px] flex items-center justify-center text-base text-text-secondary z-10 ${collapsed && !mobileOpen ? (theme === "dark" ? "w-[22px] h-[22px] text-[18px]" : "hidden") : ""}`}>
+                            <span className={`absolute top-1/2 -translate-y-1/2 left-[5px] w-[14px] h-[14px] flex items-center justify-center text-sm text-text-secondary z-10 ${collapsed && !mobileOpen ? (theme === "dark" ? "w-[20px] h-[20px] text-base" : "hidden") : ""}`}>
                                 <IoSunnyOutline />
                             </span>
 
                             {/* MOON */}
-                            <span className={`absolute top-1/2 -translate-y-1/2 right-[5px] w-[18px] h-[18px] flex items-center justify-center text-base text-text-secondary z-10 ${collapsed && !mobileOpen ? (theme === "light" ? "w-[22px] h-[22px] text-[18px]" : "hidden") : ""}`}>
+                            <span className={`absolute top-1/2 -translate-y-1/2 right-[5px] w-[14px] h-[14px] flex items-center justify-center text-sm text-text-secondary z-10 ${collapsed && !mobileOpen ? (theme === "light" ? "w-[20px] h-[20px] text-base" : "hidden") : ""}`}>
                                 <IoMoonOutline />
                             </span>
                         </div>
 
-                        <span className={`font-normal text-sm text-text-secondary whitespace-nowrap transition-opacity duration-200 ${collapsed ? 'md:hidden' : 'opacity-100'}`}>
+                        <span className={`font-normal text-[12px] text-text-secondary whitespace-nowrap transition-opacity duration-200 ${collapsed ? 'md:hidden' : 'opacity-100'}`}>
                             {theme === 'dark' ? 'Darkmode' : 'Lightmode'}
                         </span>
                     </div>
