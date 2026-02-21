@@ -74,16 +74,16 @@ function Sidebar() {
     return (
         <>
             {/* Mobile Header / Hamburger */}
-            <header className="md:hidden flex items-center justify-between p-4 bg-bg-sidebar border-b border-border-color sticky top-0 left-0 w-full z-[110]">
+            <header className="md:hidden flex items-center gap-1 p-4 bg-bg-sidebar border-b border-border-color sticky top-0 left-0 w-full z-[110]">
+                <button className="text-[28px] text-text-secondary flex items-center justify-center h-8 w-8" onClick={() => setMobileOpen(true)}>
+                    <IoMenuOutline />
+                </button>
                 <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-accent-light flex items-center justify-center overflow-hidden">
+                    <div className="w-8 h-8 rounded-lg bg-accent-light flex items-center justify-center overflow-hidden">
                         <img src={currentLogo} alt="Logo" className="w-[44px] h-[44px] object-contain" />
                     </div>
                     <span className="font-semibold text-sm text-text-primary">Client Portal</span>
                 </div>
-                <button className="text-[24px] text-text-secondary flex items-center justify-center" onClick={() => setMobileOpen(true)}>
-                    <IoMenuOutline />
-                </button>
             </header>
 
             {/* Mobile Overlay */}
